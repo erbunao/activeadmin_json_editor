@@ -9,23 +9,9 @@
       var textarea = $($(wrap).find('textarea'));
       var editor;
       var options = {
-        modes: ['tree', 'text'],
-        mode: 'tree',
-        change: function(ev){
-          try {
-            var text = JSON.stringify(editor.get());
-            textarea.text(text);
-            $(fieldset).toggleClass('error',false);
-            textarea.text(JSON.stringify(editor.get()));
-          } catch (e) {
-            editor.options.error(e);
-          }
-        },
-        error: function(e){
-          $(fieldset).toggleClass('error',true);
-        }
+        mode: 'view',
       };
-      editor = new JSONEditor(container, options,JSON.parse(textarea.val()));
+      editor = new JSONEditor(container, options, JSON.parse(textarea.val()));
     });
   });
 })(window, jQuery);
